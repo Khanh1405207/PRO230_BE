@@ -24,7 +24,10 @@ public class SignUp extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Sign up");
-        setLocationRelativeTo(null);
+        placeHolder();
+    }
+
+    public void placeHolder() {
         txtUserName.setText("- Username");
         txtUserName.setForeground(Color.gray);
         txtEmail.setText("- Email");

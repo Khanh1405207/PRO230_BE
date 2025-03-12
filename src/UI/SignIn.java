@@ -20,6 +20,10 @@ public class SignIn extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Sign in");
+        placeHolder();
+    }
+
+    public void placeHolder() {
         txtEmail.setText("- Email");
         txtEmail.setForeground(Color.gray);
         txtPassword.setText("- Password");
