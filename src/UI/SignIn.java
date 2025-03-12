@@ -4,6 +4,9 @@
  */
 package UI;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ADMIN
@@ -15,6 +18,12 @@ public class SignIn extends javax.swing.JFrame {
      */
     public SignIn() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Sign in");
+        txtEmail.setText("- Email");
+        txtEmail.setForeground(Color.gray);
+        txtPassword.setText("- Password");
+        txtPassword.setForeground(Color.gray);
     }
 
     /**
@@ -26,31 +35,143 @@ public class SignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        pnlSignIn = new javax.swing.JPanel();
+        txtEmail = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        lblSignUp = new javax.swing.JLabel();
+        btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(382, 336));
+        setSize(new java.awt.Dimension(382, 336));
 
-        jTextField1.setText("jTextField1");
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
+
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
+
+        lblSignUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSignUp.setText("Sign up");
+        lblSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSignUpMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSignUpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSignUpMouseExited(evt);
+            }
+        });
+
+        btnSignUp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSignUp.setText("Sign in");
+
+        javax.swing.GroupLayout pnlSignInLayout = new javax.swing.GroupLayout(pnlSignIn);
+        pnlSignIn.setLayout(pnlSignInLayout);
+        pnlSignInLayout.setHorizontalGroup(
+            pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSignInLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSignUp)
+                    .addComponent(txtPassword)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        pnlSignInLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtPassword});
+
+        pnlSignInLayout.setVerticalGroup(
+            pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSignInLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblSignUp)
+                .addGap(18, 18, 18)
+                .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        pnlSignInLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEmail, txtPassword});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
+            .addComponent(pnlSignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(379, Short.MAX_VALUE))
+            .addComponent(pnlSignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSignUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseEntered
+        // TODO add your handling code here:
+        lblSignUp.setForeground(Color.blue);
+        lblSignUp.setFont(new Font("segoe UI", Font.BOLD, 12));
+    }//GEN-LAST:event_lblSignUpMouseEntered
+
+    private void lblSignUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseExited
+        // TODO add your handling code here:
+        lblSignUp.setForeground(Color.black);
+        lblSignUp.setFont(new Font("segoe UI", Font.PLAIN, 12));
+    }//GEN-LAST:event_lblSignUpMouseExited
+
+    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
+        // TODO add your handling code here:
+        txtEmail.setText("");
+        txtEmail.setForeground(Color.black);
+    }//GEN-LAST:event_txtEmailFocusGained
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        // TODO add your handling code here:
+        if (txtEmail.getText().isBlank()) {
+            txtEmail.setText("- Email");
+            txtEmail.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
+        // TODO add your handling code here:
+        txtPassword.setText("");
+        txtPassword.setForeground(Color.black);
+    }//GEN-LAST:event_txtPasswordFocusGained
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        // TODO add your handling code here:
+        if (txtPassword.getText().isBlank()) {
+            txtPassword.setText("- Password");
+            txtPassword.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void lblSignUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        SignUp signUp = new SignUp();
+        signUp.setVisible(true);
+    }//GEN-LAST:event_lblSignUpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -88,6 +209,10 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnSignUp;
+    private javax.swing.JLabel lblSignUp;
+    private javax.swing.JPanel pnlSignIn;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
