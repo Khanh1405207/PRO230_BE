@@ -6,6 +6,8 @@ package UI;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,6 +23,7 @@ public class SignIn extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Sign in");
         placeHolder();
+        design();
     }
 
     public void placeHolder() {
@@ -28,6 +31,18 @@ public class SignIn extends javax.swing.JFrame {
         txtEmail.setForeground(Color.gray);
         txtPassword.setText("- Password");
         txtPassword.setForeground(Color.gray);
+    }
+
+    public void design() {
+        btnSignUp.setFont(new Font("Arial", Font.BOLD, 16)); // Đặt font chữ
+        btnSignUp.setForeground(Color.WHITE); // Màu chữ trắng
+        btnSignUp.setBackground(new Color(0, 0, 0)); // Màu nền xanh
+        btnSignUp.setFocusPainted(false); // Bỏ viền focus
+        btnSignUp.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        lblSignUp.setForeground(new Color(204, 204, 204));
+        lblSignUp.setFont(new Font("segoe UI", Font.BOLD, 12));
+        txtEmail.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        pnlSignIn.setBackground(new Color(102, 102, 102));
     }
 
     /**
@@ -92,9 +107,11 @@ public class SignIn extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSignUp)
                     .addComponent(txtPassword)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addGroup(pnlSignInLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblSignUp)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -132,14 +149,14 @@ public class SignIn extends javax.swing.JFrame {
 
     private void lblSignUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseEntered
         // TODO add your handling code here:
-        lblSignUp.setForeground(Color.blue);
+        lblSignUp.setForeground(new Color(255, 255, 255));
         lblSignUp.setFont(new Font("segoe UI", Font.BOLD, 12));
     }//GEN-LAST:event_lblSignUpMouseEntered
 
     private void lblSignUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignUpMouseExited
         // TODO add your handling code here:
-        lblSignUp.setForeground(Color.black);
-        lblSignUp.setFont(new Font("segoe UI", Font.PLAIN, 12));
+        lblSignUp.setForeground(new Color(204, 204, 204));
+        lblSignUp.setFont(new Font("segoe UI", Font.BOLD, 12));
     }//GEN-LAST:event_lblSignUpMouseExited
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained

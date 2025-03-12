@@ -25,6 +25,7 @@ public class SignUp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Sign up");
         placeHolder();
+        design();
     }
 
     public void placeHolder() {
@@ -36,6 +37,19 @@ public class SignUp extends javax.swing.JFrame {
         txtSDT.setForeground(Color.gray);
         txtPassword.setText("- Password");
         txtPassword.setForeground(Color.gray);
+    }
+
+    public void design() {
+        btnSignUp.setFont(new Font("Arial", Font.BOLD, 14));
+        btnSignUp.setForeground(Color.white);
+        btnSignUp.setBackground(new Color(0, 0, 0));
+        txtUserName.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        txtEmail.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        txtSDT.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        txtPassword.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        lblSignIn.setForeground(new Color(204, 204, 204));
+        lblSignIn.setFont(new Font("segoe UI", Font.BOLD, 12));
+        pnlSignUp.setBackground(new Color(102, 102, 102));
     }
 
     /**
@@ -180,7 +194,7 @@ public class SignUp extends javax.swing.JFrame {
 
     private void lblSignInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignInMouseEntered
         // TODO add your handling code here:
-        lblSignIn.setForeground(Color.blue);
+        lblSignIn.setForeground(new Color(255, 255, 255));
         lblSignIn.setFont(new Font("segoe UI", Font.BOLD, 12));
     }//GEN-LAST:event_lblSignInMouseEntered
 
@@ -242,8 +256,8 @@ public class SignUp extends javax.swing.JFrame {
 
     private void lblSignInMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignInMouseExited
         // TODO add your handling code here:
-        lblSignIn.setForeground(Color.black);
-        lblSignIn.setFont(new Font("segoe UI", Font.PLAIN, 12));
+        lblSignIn.setForeground(new Color(204, 204, 204));
+        lblSignIn.setFont(new Font("segoe UI", Font.BOLD, 12));
     }//GEN-LAST:event_lblSignInMouseExited
 
     private void lblSignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSignInMouseClicked
