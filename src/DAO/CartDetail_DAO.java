@@ -15,5 +15,6 @@ public class CartDetail_DAO {
     String SqlUpdateCartDetail = "UPDATE CartDetail SET CartID = ?, ProductVariationId = ?, Price = ?, Quantity = ?, TotalMoney = ?, Status = ? WHERE UniqueID = ?";
 
     String SqlDeleteCartDetail = "DELETE FROM CartDetail WHERE UniqueID = ?";
-
+    
+    String s = "s";
 }
