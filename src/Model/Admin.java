@@ -9,5 +9,5 @@ package Model;
  * @author ADMIN
  */
 public class Admin {
-    
+    String beo = "s";
 }
