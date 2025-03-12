@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Model.Role;
+import Model.User;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -14,6 +16,8 @@ import javax.swing.JPanel;
  * @author ADMIN
  */
 public class SignIn extends javax.swing.JFrame {
+
+    private Menu menu;
 
     /**
      * Creates new form SignIn
@@ -98,6 +102,11 @@ public class SignIn extends javax.swing.JFrame {
 
         btnSignUp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSignUp.setText("Sign in");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlSignInLayout = new javax.swing.GroupLayout(pnlSignIn);
         pnlSignIn.setLayout(pnlSignInLayout);
@@ -193,6 +202,18 @@ public class SignIn extends javax.swing.JFrame {
         SignUp signUp = new SignUp();
         signUp.setVisible(true);
     }//GEN-LAST:event_lblSignUpMouseClicked
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        // TODO add your handling code here:
+        Role admin = new Role();
+        admin.addPermission("Read");
+        admin.addPermission("Write");
+        admin.addPermission("Delete");
+        admin.addPermission("Update");
+        User Khanh = new User();
+        Khanh.addRoles(admin);
+        dispose();
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments

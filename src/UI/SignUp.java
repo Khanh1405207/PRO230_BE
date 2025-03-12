@@ -17,6 +17,8 @@ import javax.swing.border.MatteBorder;
  */
 public class SignUp extends javax.swing.JFrame {
 
+    
+
     /**
      * Creates new form SignUp
      */
