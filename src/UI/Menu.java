@@ -14,20 +14,29 @@ import javax.swing.JOptionPane;
  * @author ADMIN
  */
 public class Menu extends javax.swing.JFrame {
+
+    User user;
+
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu(User us) {
         initComponents();
+        setTitle("Menu");
+        user = us;
         setExtendedState(MAXIMIZED_BOTH);
         design();
     }
-    
+
     public void design() {
         pnlMenu.setBackground(new Color(179, 179, 179));
+        if (user != null) {
+            lblUserName.setText(user.getUserName());
+        }
         lblUserName.setFont(new Font("Arial", Font.BOLD, 14));
         lblUserName.setForeground(Color.white);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +64,12 @@ public class Menu extends javax.swing.JFrame {
         lblCart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCartMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCartMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCartMouseExited(evt);
             }
         });
 
@@ -142,12 +157,26 @@ public class Menu extends javax.swing.JFrame {
     private void lblCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseClicked
         // TODO add your handling code here:
         pnlCart.setBackground(new Color(255, 255, 255));
-        pnlContent.setBackground(Color.red);
+        pnlContent.setBackground(Color.white);
     }//GEN-LAST:event_lblCartMouseClicked
 
     private void pnlAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAvatarMouseClicked
         // TODO add your handling code here:
+        if (user == null) {
+            dispose();
+            new SignIn().setVisible(true);
+        }
     }//GEN-LAST:event_pnlAvatarMouseClicked
+
+    private void lblCartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lblCartMouseEntered
+
+    private void lblCartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseExited
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lblCartMouseExited
 
     /**
      * @param args the command line arguments
@@ -179,7 +208,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(null).setVisible(true);
             }
         });
     }

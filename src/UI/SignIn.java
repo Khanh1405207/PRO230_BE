@@ -9,6 +9,7 @@ import Model.User;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -205,15 +206,20 @@ public class SignIn extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
+        User khanh = new User();
         Role admin = new Role();
         admin.addPermission("Read");
         admin.addPermission("Write");
         admin.addPermission("Delete");
         admin.addPermission("Update");
-        User khanh = new User();
-        khanh.addRoles(admin);
-        new Menu().setVisible(true);
-        dispose();
+        if (txtEmail.getText().equalsIgnoreCase("Khanhdbth03647@fpt.edu.vn") && txtPassword.getText().equals("Khanh207!")) {
+            khanh.addRoles(admin);
+            khanh.setUserName(txtEmail.getText());
+            new Menu(khanh).setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Wrong email or password");
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     /**
