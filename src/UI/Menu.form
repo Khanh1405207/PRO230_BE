@@ -132,6 +132,9 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="pnlAvatar">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlAvatarMouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">

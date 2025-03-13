@@ -47,7 +47,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnSignUp" max="32767" attributes="0"/>
+                      <Component id="btnSignIn" max="32767" attributes="0"/>
                       <Component id="txtPassword" linkSize="1" max="32767" attributes="0"/>
                       <Component id="txtEmail" linkSize="1" pref="319" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -69,7 +69,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblSignUp" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnSignUp" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="btnSignIn" min="-2" pref="45" max="-2" attributes="0"/>
                   <EmptySpace pref="50" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -99,7 +99,7 @@
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSignUpMouseExited"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSignUp">
+        <Component class="javax.swing.JButton" name="btnSignIn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -107,7 +107,7 @@
             <Property name="text" type="java.lang.String" value="Sign in"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignUpActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignInActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -38,11 +38,11 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     public void design() {
-        btnSignUp.setFont(new Font("Arial", Font.BOLD, 16)); // Đặt font chữ
-        btnSignUp.setForeground(Color.WHITE); // Màu chữ trắng
-        btnSignUp.setBackground(new Color(0, 0, 0)); // Màu nền xanh
-        btnSignUp.setFocusPainted(false); // Bỏ viền focus
-        btnSignUp.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        btnSignIn.setFont(new Font("Arial", Font.BOLD, 16)); // Đặt font chữ
+        btnSignIn.setForeground(Color.WHITE); // Màu chữ trắng
+        btnSignIn.setBackground(new Color(0, 0, 0)); // Màu nền xanh
+        btnSignIn.setFocusPainted(false); // Bỏ viền focus
+        btnSignIn.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         lblSignUp.setForeground(new Color(204, 204, 204));
         lblSignUp.setFont(new Font("segoe UI", Font.BOLD, 12));
         txtEmail.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -62,7 +62,7 @@ public class SignIn extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         lblSignUp = new javax.swing.JLabel();
-        btnSignUp = new javax.swing.JButton();
+        btnSignIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(382, 336));
@@ -100,11 +100,11 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        btnSignUp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnSignUp.setText("Sign in");
-        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+        btnSignIn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSignIn.setText("Sign in");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignUpActionPerformed(evt);
+                btnSignInActionPerformed(evt);
             }
         });
 
@@ -115,7 +115,7 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(pnlSignInLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(pnlSignInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPassword)
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                     .addGroup(pnlSignInLayout.createSequentialGroup()
@@ -136,7 +136,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblSignUp)
                 .addGap(18, 18, 18)
-                .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -203,17 +203,18 @@ public class SignIn extends javax.swing.JFrame {
         signUp.setVisible(true);
     }//GEN-LAST:event_lblSignUpMouseClicked
 
-    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
         Role admin = new Role();
         admin.addPermission("Read");
         admin.addPermission("Write");
         admin.addPermission("Delete");
         admin.addPermission("Update");
-        User Khanh = new User();
-        Khanh.addRoles(admin);
+        User khanh = new User();
+        khanh.addRoles(admin);
+        new Menu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnSignUpActionPerformed
+    }//GEN-LAST:event_btnSignInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,7 +252,7 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSignUp;
+    private javax.swing.JButton btnSignIn;
     private javax.swing.JLabel lblSignUp;
     private javax.swing.JPanel pnlSignIn;
     private javax.swing.JTextField txtEmail;

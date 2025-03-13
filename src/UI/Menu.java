@@ -7,15 +7,13 @@ package UI;
 import Model.User;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ADMIN
  */
 public class Menu extends javax.swing.JFrame {
-    
-    User user;
-
     /**
      * Creates new form Menu
      */
@@ -27,15 +25,9 @@ public class Menu extends javax.swing.JFrame {
     
     public void design() {
         pnlMenu.setBackground(new Color(179, 179, 179));
-        lblUserName.setText("Khanh");
         lblUserName.setFont(new Font("Arial", Font.BOLD, 14));
         lblUserName.setForeground(Color.white);
     }
-    
-    public void getUser(User us) {
-        user = us;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,6 +91,12 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
+        pnlAvatar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlAvatarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlAvatarLayout = new javax.swing.GroupLayout(pnlAvatar);
         pnlAvatar.setLayout(pnlAvatarLayout);
         pnlAvatarLayout.setHorizontalGroup(
@@ -146,6 +144,10 @@ public class Menu extends javax.swing.JFrame {
         pnlCart.setBackground(new Color(255, 255, 255));
         pnlContent.setBackground(Color.red);
     }//GEN-LAST:event_lblCartMouseClicked
+
+    private void pnlAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAvatarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlAvatarMouseClicked
 
     /**
      * @param args the command line arguments

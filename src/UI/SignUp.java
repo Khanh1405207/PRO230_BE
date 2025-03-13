@@ -125,6 +125,11 @@ public class SignUp extends javax.swing.JFrame {
         });
 
         btnSignUp.setText("Sign up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         cboValidate.setText("Validate");
         cboValidate.setEnabled(false);
@@ -268,6 +273,10 @@ public class SignUp extends javax.swing.JFrame {
         SignIn signIn = new SignIn();
         signIn.setVisible(true);
     }//GEN-LAST:event_lblSignInMouseClicked
+
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments
