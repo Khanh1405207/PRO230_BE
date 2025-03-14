@@ -188,7 +188,7 @@ public class SignIn extends javax.swing.JFrame {
 
     private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
         // TODO add your handling code here:
-        Color stt = txtEmail.getForeground();
+        Color stt = txtPassword.getForeground();
         if (stt == Color.GRAY) {
             txtPassword.setText("");
             txtPassword.setForeground(Color.black);
