@@ -171,8 +171,11 @@ public class SignIn extends javax.swing.JFrame {
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
         // TODO add your handling code here:
-        txtEmail.setText("");
-        txtEmail.setForeground(Color.black);
+        Color stt = txtEmail.getForeground();
+        if (stt == Color.GRAY) {
+            txtEmail.setText("");
+            txtEmail.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
@@ -185,8 +188,11 @@ public class SignIn extends javax.swing.JFrame {
 
     private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
         // TODO add your handling code here:
-        txtPassword.setText("");
-        txtPassword.setForeground(Color.black);
+        Color stt = txtEmail.getForeground();
+        if (stt == Color.GRAY) {
+            txtPassword.setText("");
+            txtPassword.setForeground(Color.black);
+        }
     }//GEN-LAST:event_txtPasswordFocusGained
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
@@ -217,7 +223,7 @@ public class SignIn extends javax.swing.JFrame {
             khanh.setUserName(txtEmail.getText());
             new Menu(khanh).setVisible(true);
             dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Wrong email or password");
         }
     }//GEN-LAST:event_btnSignInActionPerformed
