@@ -26,7 +26,7 @@ public class Menu extends javax.swing.JFrame {
         user = us;
         setExtendedState(MAXIMIZED_BOTH);
         design();
-       String s;
+       String ss;
        
     }
 
