@@ -240,7 +240,7 @@ public class SignIn extends javax.swing.JFrame {
             new Menu(khanh).setVisible(true);
             dispose();
         } else {
-            lblNotifi.setText("- Khong co tai khoan thi cut");
+            lblNotifi.setText("- Wrong email or password");
             lblNotifi.setForeground(new Color(255, 102, 102));
         }
     }//GEN-LAST:event_btnSignInActionPerformed
