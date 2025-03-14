@@ -5,9 +5,11 @@
 package UI;
 
 import Model.User;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -26,7 +28,7 @@ public class Menu extends javax.swing.JFrame {
         user = us;
         setExtendedState(MAXIMIZED_BOTH);
         design();
-       
+
     }
 
     public void design() {
@@ -171,12 +173,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void lblCartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblCartMouseEntered
 
     private void lblCartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_lblCartMouseExited
 
     /**
@@ -205,7 +207,11 @@ public class Menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        try {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
