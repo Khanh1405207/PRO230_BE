@@ -10,6 +10,10 @@ package DAO;
  */
 public class Customer_DAO {
 
+    String selectCustomer = "SELECT IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
+            + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
+            + "PasswordHash, LogOut, AccessFailCount FROM Customer";
+    
     String SqlInsertCustomer = "INSERT INTO Customer (IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, PasswordHash, LogOut, AccessFailCount) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

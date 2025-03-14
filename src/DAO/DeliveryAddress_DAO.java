@@ -10,6 +10,10 @@ package DAO;
  */
 public class DeliveryAddress_DAO {
 
+    String selectDeliveryAddress = "SELECT Id, CustomerId, Name, ProvinceID, ProvinceName, DistrictID, "
+            + "DistrictName, WardCode, Address, PhoneNumber, Description, Image, "
+            + "CreateDate, UpdateDate FROM DeliveryAddress";
+
     String SqlInsertDeliveryAddress = "INSERT INTO DeliveryAddress (Id, CustomerId, Name, ProvinceID, ProvinceName, DistrictID, DistrictName, WardCode, Address, PhoneNumber, Description, Image, CreateDate, UpdateDate) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

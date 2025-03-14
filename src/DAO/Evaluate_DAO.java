@@ -10,6 +10,8 @@ package DAO;
  */
 public class Evaluate_DAO {
 
+    String selectEvaluate = "SELECT ProductID, CustomerID, Comment, Rating, Row, UpdateDate FROM Evaluate";
+
     String SqlInsertEvaluate = "INSERT INTO Evaluate (ProductID, CustomerID, Comment, Rating, UpdateDate) VALUES (?, ?, ?, ?, ?)";
 
     String SqlUpdateEvaluate = "UPDATE Evaluate SET Comment = ?, Rating = ?, UpdateDate = ? WHERE ProductID = ? AND CustomerID = ?";

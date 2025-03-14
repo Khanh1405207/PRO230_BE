@@ -10,6 +10,8 @@ package DAO;
  */
 public class Color_DAO {
 
+    String selectColor = "SELECT Id, Name, HexCode, Status, Image, CreateOrUpdate FROM Color";
+
     String SqlInsertColor = "INSERT INTO Color (Id, Name, HexCode, Status, Image, CreateOrUpdate) VALUES (?, ?, ?, ?, ?, ?)";
 
     String SqlUpdateColor = "UPDATE Color SET Name = ?, HexCode = ?, Status = ?, Image = ?, CreateOrUpdate = ? WHERE Id = ?";

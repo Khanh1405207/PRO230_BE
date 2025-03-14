@@ -10,6 +10,8 @@ package DAO;
  */
 public class Cart_DAO {
 
+    String selectCart = "SELECT Id, CustomerId, CartID, CreateDate, UpdateDate, Status FROM Cart";
+
     String SqlInsertCart = "INSERT INTO Cart (Id, CustomerId, CartID, CreateDate, UpdateDate, Status) VALUES (?, ?, ?, ?, ?, ?)";
 
     String SqlUpdateCart = "UPDATE Cart SET CustomerId = ?, CartID = ?, CreateDate = ?, UpdateDate = ?, Status = ? WHERE Id = ?";

@@ -10,6 +10,8 @@ package DAO;
  */
 public class Category_DAO {
 
+    String selectCategory = "SELECT ID, Name, SearchCount, Status, Description FROM Category";
+
     String SqlInsertCategory = "INSERT INTO Category (ID, Name, SearchCount, Status, Description) VALUES (?, ?, ?, ?, ?)";
 
     String SqlUpdateCategory = "UPDATE Category SET Name = ?, SearchCount = ?, Status = ?, Description = ? WHERE ID = ?";
