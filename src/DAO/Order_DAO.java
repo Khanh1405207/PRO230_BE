@@ -10,6 +10,10 @@ package DAO;
  */
 public class Order_DAO {
 
+    String selectOrder = "SELECT UniqueID, CustomerID, AdminID, CreateDate, UpdateDate, PaymentDate, PaymentType, "
+            + "ShippingAddress, ShippingPhoneNumber, ShippingFee, TotalMoney, Status, Description, "
+            + "ReasonOfChange, HistoryLogChange FROM [Order]";
+
     String SqlInsertOrder = "INSERT INTO `Order` (UniqueID, CustomerID, AdminID, CreateDate, UpdateDate, PaymentDate, PaymentType, ShippingAddress, ShippingPhoneNumber, ShippingFee, TotalMoney, Status, Description, ReasonOfChange) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

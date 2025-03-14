@@ -10,6 +10,8 @@ package DAO;
  */
 public class Brand_DAO {
 
+    String selectBrand = "SELECT ID, Name, SearchCount, Description, Status FROM Brand";
+
     String SqlInsertBrand = "INSERT INTO Brand (Id, Name, SearchCount, Description, Status) VALUES (?, ?, ?, ?, ?)";
 
     String SqlUpdateBrand = "UPDATE Brand SET Name = ?, SearchCount = ?, Description = ?, Status = ? WHERE Id = ?";

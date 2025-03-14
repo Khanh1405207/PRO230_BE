@@ -10,6 +10,8 @@ package DAO;
  */
 public class ProductVariation_DAO {
 
+    String selectProductVariation = "SELECT Id, ProductID, ColorId, Stock, CreateDate, UpdateDate, Image FROM ProductVariation";
+
     String SqlInsertProductVariation = "INSERT INTO ProductVariation (Id, ProductID, ColorId, Stock, CreateDate, UpdateDate, Image) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     String SqlUpdateProductVariation = "UPDATE ProductVariation SET ProductID = ?, ColorId = ?, Stock = ?, CreateDate = ?, UpdateDate = ?, Image = ? WHERE Id = ?";

@@ -10,6 +10,9 @@ package DAO;
  */
 public class Product_DAO {
 
+    String selectProduct = "SELECT IdProduct, Name, CategoryId, ProductCode, BrandID, CreateDate, UpdateDate, "
+            + "LikeCount, ViewCount, Price, Stock, Status, Description, ProductType FROM Product";
+
     String SqlInsertProduct = "INSERT INTO Product (IdProduct, Name, CategoryId, ProductCode, BrandID, CreateDate, UpdateDate, LikeCount, ViewCount, Price, Stock, Status, Description, ProductType) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
