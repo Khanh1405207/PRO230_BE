@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+
 import Model.Customer;
 import Utility.DBcontext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+
 /**
  *
  * @author ADMIN
@@ -17,17 +19,17 @@ public class Customer_DAO {
     String selectCustomer = "SELECT IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
             + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
             + "PasswordHash, LogOut, AccessFailCount FROM Customer";
-    
+
     String SqlInsertCustomer = "INSERT INTO Customer (IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, PasswordHash, LogOut, AccessFailCount) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     String SqlUpdateCustomer = "UPDATE Customer SET Name = ?, DoB = ?, Sex = ?, Email = ?, PhoneNumber = ?, Address = ?, Status = ?, Description = ?, Image = ?, Password = ?, UserName = ?, EmailConfirmed = ?, PhoneNumberConfirmed = ?, PasswordHash = ?, LogOut = ?, AccessFailCount = ? WHERE IdCustomer = ?";
 
     String SqlDeleteCustomer = "DELETE FROM Customer WHERE IdCustomer = ?";
-    
+
     Connection cn = DBcontext.getConnection();
-    
-     public ArrayList<Customer> selectCustomer() {
+
+    public ArrayList<Customer> selectCustomer() {
         ArrayList<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement stm = cn.prepareStatement(selectCustomer);
@@ -58,6 +60,20 @@ public class Customer_DAO {
             e.printStackTrace();
         }
         return customerList;
+    }
+
+    public ResultSet selectCustomerUser(String email, String password) {
+        try {
+            String sql = "SELECT UserName,Email,[Password] FROM Customer WHERE Email=? AND [Password]=?";
+            PreparedStatement stm = cn.prepareStatement(sql);
+            stm.setString(1, email);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public boolean insertCustomer(Customer customer) {

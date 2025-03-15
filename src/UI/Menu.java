@@ -8,6 +8,9 @@ import Model.User;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -40,6 +43,13 @@ public class Menu extends javax.swing.JFrame {
         lblUserName.setForeground(Color.white);
     }
 
+    public void onClickDashBoard() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> pnlCart.setBackground(new Color(115, 115, 115));
+        scheduler.schedule(task, 20, TimeUnit.MILLISECONDS);
+        scheduler.shutdown();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +60,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlFunction = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         pnlCart = new javax.swing.JPanel();
         lblCart = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
@@ -60,6 +71,11 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFunction.setLayout(new java.awt.GridLayout(20, 0));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Dash Board");
+        pnlFunction.add(jLabel1);
 
         lblCart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblCart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,9 +103,8 @@ public class Menu extends javax.swing.JFrame {
         pnlCartLayout.setVerticalGroup(
             pnlCartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCartLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCart)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblCart, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlFunction.add(pnlCart);
@@ -159,7 +174,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void lblCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseClicked
         // TODO add your handling code here:
-        pnlCart.setBackground(new Color(255, 255, 255));
+        pnlCart.setBackground(new Color(217, 217, 217));
+        onClickDashBoard();
         pnlContent.setBackground(Color.white);
     }//GEN-LAST:event_lblCartMouseClicked
 
@@ -173,12 +189,14 @@ public class Menu extends javax.swing.JFrame {
 
     private void lblCartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseEntered
         // TODO add your handling code here:
-
+        pnlCart.setBackground(new Color(115, 115, 115));
+        lblCart.setForeground(Color.white);
     }//GEN-LAST:event_lblCartMouseEntered
 
     private void lblCartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseExited
         // TODO add your handling code here:
-
+        pnlCart.setBackground(null);
+        lblCart.setForeground(null);
     }//GEN-LAST:event_lblCartMouseExited
 
     /**
@@ -215,12 +233,13 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SignIn().setVisible(true);
+                new Menu(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCart;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlAvatar;
