@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 public class Order {
 
     private Integer uniqueID;
-    private Customer customer;
-    private Admin admin;
+    private int customer;
+    private int admin;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private LocalDateTime paymentDate;
@@ -32,7 +32,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Integer uniqueID, Customer customer, Admin admin, LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime paymentDate, String paymentType, String shippingAddress, String shippingPhoneNumber, BigDecimal shippingFee, BigDecimal totalMoney, String status, String description, String reasonOfChange, String historyLogChange) {
+    public Order(Integer uniqueID, int customer, int admin, LocalDateTime createDate, LocalDateTime updateDate, LocalDateTime paymentDate, String paymentType, String shippingAddress, String shippingPhoneNumber, BigDecimal shippingFee, BigDecimal totalMoney, String status, String description, String reasonOfChange, String historyLogChange) {
         this.uniqueID = uniqueID;
         this.customer = customer;
         this.admin = admin;
@@ -50,6 +50,8 @@ public class Order {
         this.historyLogChange = historyLogChange;
     }
 
+
+
     public Integer getUniqueID() {
         return uniqueID;
     }
@@ -58,19 +60,19 @@ public class Order {
         this.uniqueID = uniqueID;
     }
 
-    public Customer getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 
-    public Admin getAdmin() {
+    public int getAdmin() {
         return admin;
     }
 
-    public void setAdmin(Admin admin) {
+    public void setAdmin(int admin) {
         this.admin = admin;
     }
 

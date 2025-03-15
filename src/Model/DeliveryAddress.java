@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 public class DeliveryAddress {
     private Integer id;
-    private Customer customer;
+    private int customerID;
     private String name;
     private Integer provinceID;
     private String provinceName;
@@ -29,9 +29,9 @@ public class DeliveryAddress {
     public DeliveryAddress() {
     }
 
-    public DeliveryAddress(Integer id, Customer customer, String name, Integer provinceID, String provinceName, Integer districtID, String districtName, String wardCode, String address, String phoneNumber, String description, String image, LocalDateTime createDate, LocalDateTime updateDate) {
+    public DeliveryAddress(Integer id, int customerID, String name, Integer provinceID, String provinceName, Integer districtID, String districtName, String wardCode, String address, String phoneNumber, String description, String image, LocalDateTime createDate, LocalDateTime updateDate) {
         this.id = id;
-        this.customer = customer;
+        this.customerID = customerID;
         this.name = name;
         this.provinceID = provinceID;
         this.provinceName = provinceName;
@@ -46,6 +46,7 @@ public class DeliveryAddress {
         this.updateDate = updateDate;
     }
 
+
     public Integer getId() {
         return id;
     }
@@ -54,13 +55,15 @@ public class DeliveryAddress {
         this.id = id;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
+
+
 
     public String getName() {
         return name;

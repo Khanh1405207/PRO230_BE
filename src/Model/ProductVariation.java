@@ -17,21 +17,23 @@ public class ProductVariation {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private String image;
-    private Product product;
-    private Color color;
+    private int productID;
+    private int colorID;
 
     public ProductVariation() {
     }
 
-    public ProductVariation(Integer id, Integer stock, LocalDateTime createDate, LocalDateTime updateDate, String image, Product product, Color color) {
+    public ProductVariation(Integer id, Integer stock, LocalDateTime createDate, LocalDateTime updateDate, String image, int productID, int colorID) {
         this.id = id;
         this.stock = stock;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.image = image;
-        this.product = product;
-        this.color = color;
+        this.productID = productID;
+        this.colorID = colorID;
     }
+
+    
 
     public Integer getId() {
         return id;
@@ -73,20 +75,22 @@ public class ProductVariation {
         this.image = image;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getProductID() {
+        return productID;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public Color getColor() {
-        return color;
+    public int getColorID() {
+        return colorID;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setColorID(int colorID) {
+        this.colorID = colorID;
     }
+
+
 
 }

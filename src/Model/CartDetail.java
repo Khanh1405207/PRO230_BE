@@ -13,25 +13,27 @@ import java.math.BigDecimal;
 public class CartDetail {
 
     private Integer uniqueID;
-    private Cart cart;
-    private ProductVariation productVariation;
+    private int cartID;
+    private int productVariationID;
     private BigDecimal price;
-    private Integer quantity;
+    private int quantity;
     private BigDecimal totalMoney;
     private String status;
 
     public CartDetail() {
     }
 
-    public CartDetail(Integer uniqueID, Cart cart, ProductVariation productVariation, BigDecimal price, Integer quantity, BigDecimal totalMoney, String status) {
+    public CartDetail(Integer uniqueID, int cartID, int productVariationID, BigDecimal price, int quantity, BigDecimal totalMoney, String status) {
         this.uniqueID = uniqueID;
-        this.cart = cart;
-        this.productVariation = productVariation;
+        this.cartID = cartID;
+        this.productVariationID = productVariationID;
         this.price = price;
         this.quantity = quantity;
         this.totalMoney = totalMoney;
         this.status = status;
     }
+
+
 
     public Integer getUniqueID() {
         return uniqueID;
@@ -41,21 +43,23 @@ public class CartDetail {
         this.uniqueID = uniqueID;
     }
 
-    public Cart getCart() {
-        return cart;
+    public int getCartID() {
+        return cartID;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
     }
 
-    public ProductVariation getProductVariation() {
-        return productVariation;
+    public int getProductVariationID() {
+        return productVariationID;
     }
 
-    public void setProductVariation(ProductVariation productVariation) {
-        this.productVariation = productVariation;
+    public void setProductVariationID(int productVariationID) {
+        this.productVariationID = productVariationID;
     }
+
+
 
     public BigDecimal getPrice() {
         return price;
@@ -65,11 +69,11 @@ public class CartDetail {
         this.price = price;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -89,4 +93,5 @@ public class CartDetail {
         this.status = status;
     }
 
+    
 }

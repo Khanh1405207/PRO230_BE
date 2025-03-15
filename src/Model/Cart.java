@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
  */
 public class Cart {
 
-    private Integer id;
-    private Customer customer;
+    private int id;
+    private int customer;
     private String cartID;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
@@ -22,7 +22,7 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Integer id, Customer customer, String cartID, LocalDateTime createDate, LocalDateTime updateDate, String status) {
+    public Cart(int id, int customer, String cartID, LocalDateTime createDate, LocalDateTime updateDate, String status) {
         this.id = id;
         this.customer = customer;
         this.cartID = cartID;
@@ -31,19 +31,19 @@ public class Cart {
         this.status = status;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Customer getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 
@@ -78,5 +78,7 @@ public class Cart {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    
 
 }
