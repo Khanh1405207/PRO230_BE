@@ -25,13 +25,13 @@ public class Product {
     private String status;
     private String description;
     private String productType;
-    private Category category;
-    private Brand brand;
+    private int categoryID;
+    private int brandID;
 
     public Product() {
     }
 
-    public Product(Integer idProduct, String name, String productCode, LocalDateTime createDate, LocalDateTime updateDate, Integer likeCount, Integer viewCount, BigDecimal price, Integer stock, String status, String description, String productType, Category category, Brand brand) {
+    public Product(Integer idProduct, String name, String productCode, LocalDateTime createDate, LocalDateTime updateDate, Integer likeCount, Integer viewCount, BigDecimal price, Integer stock, String status, String description, String productType, int categoryID, int brandID) {
         this.idProduct = idProduct;
         this.name = name;
         this.productCode = productCode;
@@ -44,9 +44,11 @@ public class Product {
         this.status = status;
         this.description = description;
         this.productType = productType;
-        this.category = category;
-        this.brand = brand;
+        this.categoryID = categoryID;
+        this.brandID = brandID;
     }
+
+    
 
     public Integer getIdProduct() {
         return idProduct;
@@ -144,20 +146,22 @@ public class Product {
         this.productType = productType;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public int getBrandID() {
+        return brandID;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
     }
+
+
 
 }

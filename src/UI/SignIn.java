@@ -134,7 +134,7 @@ public class SignIn extends javax.swing.JFrame {
                         .addComponent(lblNotifi, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(lblSignUp)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pnlSignInLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtEmail, txtPassword});
@@ -161,7 +161,9 @@ public class SignIn extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlSignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +242,7 @@ public class SignIn extends javax.swing.JFrame {
             new Menu(khanh).setVisible(true);
             dispose();
         } else {
-            lblNotifi.setText("- Khong co tai khoan thi cut");
+            lblNotifi.setText("- Wrong email or password");
             lblNotifi.setForeground(new Color(255, 102, 102));
         }
     }//GEN-LAST:event_btnSignInActionPerformed

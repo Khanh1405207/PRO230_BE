@@ -16,19 +16,19 @@ public class Evaluate {
     private String comment;
     private Integer rating;
     private LocalDateTime updateDate;
-    private Product product;
-    private Customer customer;
+    private int productID;
+    private int customerID;
 
     public Evaluate() {
     }
 
-    public Evaluate(Integer row, String comment, Integer rating, LocalDateTime updateDate, Product product, Customer customer) {
+    public Evaluate(Integer row, String comment, Integer rating, LocalDateTime updateDate, int productID, int customerID) {
         this.row = row;
         this.comment = comment;
         this.rating = rating;
         this.updateDate = updateDate;
-        this.product = product;
-        this.customer = customer;
+        this.productID = productID;
+        this.customerID = customerID;
     }
 
     public Integer getRow() {
@@ -63,20 +63,22 @@ public class Evaluate {
         this.updateDate = updateDate;
     }
 
-    public Product getProduct() {
-        return product;
+    public int getProductID() {
+        return productID;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
+
+    
 
 }
