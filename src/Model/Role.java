@@ -13,7 +13,16 @@ import java.util.Set;
  */
 public class Role {
 
+    private String roleName;
     private Set<String> permission = new HashSet<>();
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
     public void addPermission(String per) {
         permission.add(per.toUpperCase());

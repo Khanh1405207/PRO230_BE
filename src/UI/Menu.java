@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -31,16 +32,19 @@ public class Menu extends javax.swing.JFrame {
         user = us;
         setExtendedState(MAXIMIZED_BOTH);
         design();
-
     }
 
     public void design() {
-        pnlMenu.setBackground(new Color(179, 179, 179));
+        pnlMenu.setBackground(new Color(153, 153, 153));
         if (user != null) {
             lblUserName.setText(user.getUserName());
+        } else {
+            lblUserName.setText("User Name");
         }
+        btnSearch.setFocusPainted(false);
+        btnSearch.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
         lblUserName.setFont(new Font("Arial", Font.BOLD, 14));
-        lblUserName.setForeground(Color.white);
+        lblUserName.setForeground(new Color(255,255,255));
     }
 
     public void onClickDashBoard() {
@@ -67,6 +71,8 @@ public class Menu extends javax.swing.JFrame {
         pnlMenu = new javax.swing.JPanel();
         pnlAvatar = new javax.swing.JPanel();
         lblUserName = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,13 +149,19 @@ public class Menu extends javax.swing.JFrame {
 
         lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
+        btnSearch.setText("Search");
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
-                .addContainerGap(777, Short.MAX_VALUE)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(393, Short.MAX_VALUE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -163,7 +175,11 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(pnlAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                            .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSearch)))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -184,6 +200,8 @@ public class Menu extends javax.swing.JFrame {
         if (user == null) {
             dispose();
             new SignIn().setVisible(true);
+        }else{
+            new InfomationManage(user).setVisible(true);
         }
     }//GEN-LAST:event_pnlAvatarMouseClicked
 
@@ -239,6 +257,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCart;
     private javax.swing.JLabel lblUserName;
@@ -247,5 +266,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlFunction;
     private javax.swing.JPanel pnlMenu;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

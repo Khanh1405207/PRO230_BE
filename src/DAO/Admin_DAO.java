@@ -23,6 +23,10 @@ public class Admin_DAO {
             + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
             + "PasswordHash, LogOut, AccessFailCount FROM Admin";
 
+    String selectAdminById = "SELECT IdAdmin, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
+            + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
+            + "PasswordHash, LogOut, AccessFailCount FROM Admin WHERE IdAdmin=?";
+
     String SqlInsertAdmin = "INSERT INTO Admin (IdAdmin, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, PasswordHash, LogOut, AccessFailCount) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -75,11 +79,13 @@ public class Admin_DAO {
 
     public ResultSet selectAdminUser(String email, String password) {
         try {
-            String sql = "SELECT UserName,Email,[Password] FROM Admin WHERE Email=? AND [Password]=?";
+            String sql = "SELECT IdAdmin, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
+                    + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
+                    + "PasswordHash, LogOut, AccessFailCount FROM Admin WHERE Email=? AND [Password]=?";
             PreparedStatement stm = cn.prepareStatement(sql);
             stm.setString(1, email);
             stm.setString(2, password);
-            ResultSet rs=stm.executeQuery();
+            ResultSet rs = stm.executeQuery();
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
