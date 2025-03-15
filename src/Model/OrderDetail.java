@@ -12,8 +12,8 @@ import java.math.BigDecimal;
  */
 public class OrderDetail {
 
-    private Order order;
-    private ProductVariation productVariation;
+    private int orderID;
+    private int productVariationID;
     private BigDecimal price;
     private Integer quantity;
     private BigDecimal totalMoney;
@@ -22,29 +22,29 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(Order order, ProductVariation productVariation, BigDecimal price, Integer quantity, BigDecimal totalMoney, String status) {
-        this.order = order;
-        this.productVariation = productVariation;
+    public OrderDetail(int orderID, int productVariationID, BigDecimal price, Integer quantity, BigDecimal totalMoney, String status) {
+        this.orderID = orderID;
+        this.productVariationID = productVariationID;
         this.price = price;
         this.quantity = quantity;
         this.totalMoney = totalMoney;
         this.status = status;
     }
 
-    public Order getOrder() {
-        return order;
+    public int getOrderID() {
+        return orderID;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
-    public ProductVariation getProductVariation() {
-        return productVariation;
+    public int getProductVariationID() {
+        return productVariationID;
     }
 
-    public void setProductVariation(ProductVariation productVariation) {
-        this.productVariation = productVariation;
+    public void setProductVariationID(int productVariationID) {
+        this.productVariationID = productVariationID;
     }
 
     public BigDecimal getPrice() {
