@@ -10,7 +10,7 @@ public class DBcontext {
 
     public static String USERNAME = "sa";
     public static String PASWORD = "1234";
-    public static String URL = "jdbc:sqlserver://localhost:1433;databaseName=Lab5_SOF203;encrypt=true;trustServerCertificate=true;";
+    public static String URL = "jdbc:sqlserver://localhost:1433;databaseName=PRO230_DATN;encrypt=true;trustServerCertificate=true;";
     
     static {
         try {

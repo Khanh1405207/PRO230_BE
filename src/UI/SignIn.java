@@ -4,11 +4,16 @@
  */
 package UI;
 
+import DAO.Admin_DAO;
+import DAO.Customer_DAO;
+import Model.Admin;
+import Model.Customer;
 import Model.Role;
 import Model.User;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,6 +26,8 @@ import javax.swing.UIManager;
 public class SignIn extends javax.swing.JFrame {
 
     private Menu menu;
+    private Admin_DAO serviceAdmin = new Admin_DAO();
+    private Customer_DAO serviceCustomer = new Customer_DAO();
 
     /**
      * Creates new form SignIn
@@ -232,12 +239,37 @@ public class SignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         User khanh = new User();
         Role admin = new Role();
+        boolean isAdmin = false;
+        boolean isCustomer = false;
         admin.addPermission("Read");
         admin.addPermission("Write");
         admin.addPermission("Delete");
         admin.addPermission("Update");
-        if (txtEmail.getText().equalsIgnoreCase("Khanhdbth03647@fpt.edu.vn") && txtPassword.getText().equals("Khanh207!")) {
-            khanh.addRoles(admin);
+        Role customer = new Role();
+        customer.addPermission("Read");
+
+        for (Admin adminUser : serviceAdmin.selectAdmin()) {
+            if (txtEmail.getText().equalsIgnoreCase(adminUser.getEmail())
+                    && txtPassword.getText().equals(adminUser.getPassword())) {
+                isAdmin = true;
+                break;
+            }
+        }
+        for (Customer customerUser : serviceCustomer.selectCustomer()) {
+            if (txtEmail.getText().equalsIgnoreCase(customerUser.getEmail())
+                    && txtPassword.getText().equals(customerUser.getPassword())) {
+                isCustomer = true;
+                break;
+            }
+        }
+
+        if (isAdmin  ) {
+            if (isAdmin) {
+                khanh.addRoles(admin);
+            }
+            if (isCustomer) {
+                khanh.addRoles(customer);
+            }
             khanh.setUserName(txtEmail.getText());
             new Menu(khanh).setVisible(true);
             dispose();
@@ -245,20 +277,21 @@ public class SignIn extends javax.swing.JFrame {
             lblNotifi.setText("- Wrong email or password");
             lblNotifi.setForeground(new Color(255, 102, 102));
         }
+
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignInMouseEntered
         // TODO add your handling code here:
         btnSignIn.setBackground(new Color(179, 179, 179));
         btnSignIn.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 230)));
-        btnSignIn.setForeground(new Color(0,0,0));
+        btnSignIn.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_btnSignInMouseEntered
 
     private void btnSignInMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignInMouseExited
         // TODO add your handling code here:
         btnSignIn.setBackground(new Color(0, 0, 0));
         btnSignIn.setBorder(BorderFactory.createEmptyBorder());
-        btnSignIn.setForeground(new Color(255,255,255));
+        btnSignIn.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnSignInMouseExited
 
     /**
