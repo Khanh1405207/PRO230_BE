@@ -4,15 +4,20 @@
  */
 package UI;
 
+import DAO.Admin_DAO;
+import DAO.Customer_DAO;
 import Model.Role;
 import Model.User;
+import Utility.DBcontext;
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+import java.sql.ResultSet;
 
 /**
  *
@@ -236,14 +241,31 @@ public class SignIn extends javax.swing.JFrame {
         admin.addPermission("Write");
         admin.addPermission("Delete");
         admin.addPermission("Update");
-        if (txtEmail.getText().equalsIgnoreCase("Khanhdbth03647@fpt.edu.vn") && txtPassword.getText().equals("Khanh207!")) {
-            khanh.addRoles(admin);
-            khanh.setUserName(txtEmail.getText());
-            new Menu(khanh).setVisible(true);
-            dispose();
-        } else {
-            lblNotifi.setText("- Wrong email or password");
-            lblNotifi.setForeground(new Color(255, 102, 102));
+        Role customer = new Role();
+        customer.addPermission("Read");
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        try {
+            Admin_DAO daoad = new Admin_DAO();
+            Customer_DAO daocu = new Customer_DAO();
+            ResultSet rsad = daoad.selectAdminUser(email, password);
+            ResultSet rscu = daocu.selectCustomerUser(email, password);
+            if (rsad.next()) {
+                khanh.addRoles(admin);
+                khanh.setUserName(rsad.getString("UserName"));
+                new Menu(khanh).setVisible(true);
+            }
+            if (rscu.next()) {
+                khanh.addRoles(customer);
+                khanh.setUserName(rscu.getString("UserName"));
+                new Menu(khanh).setVisible(true);
+            }
+            if (!rsad.next() && !rscu.next()) {
+                lblNotifi.setText("- Wrong email or password");
+                lblNotifi.setForeground(new Color(255, 102, 102));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 
@@ -251,14 +273,14 @@ public class SignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSignIn.setBackground(new Color(179, 179, 179));
         btnSignIn.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 230)));
-        btnSignIn.setForeground(new Color(0,0,0));
+        btnSignIn.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_btnSignInMouseEntered
 
     private void btnSignInMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignInMouseExited
         // TODO add your handling code here:
         btnSignIn.setBackground(new Color(0, 0, 0));
         btnSignIn.setBorder(BorderFactory.createEmptyBorder());
-        btnSignIn.setForeground(new Color(255,255,255));
+        btnSignIn.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnSignInMouseExited
 
     /**
