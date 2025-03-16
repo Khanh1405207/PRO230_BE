@@ -11,8 +11,10 @@ import Model.Customer;
 import Model.Role;
 import Model.User;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -31,13 +33,48 @@ public class InfomationManage extends javax.swing.JFrame {
         initComponents();
         user = us;
         setLocationRelativeTo(null);
+        txtDes.setEditable(false);
         design();
     }
 
     public void design() {
         if (user != null) {
-            lblUserName.setText(user.getUserName());
-            lblEmail.setText(user.getEmail());
+            if (user.getUserName() != null) {
+                lblUserName.setText(user.getUserName());
+            } else {
+                lblUserName.setText("-----------");
+            }
+            if (user.getEmail() != null) {
+                lblEmail.setText(user.getEmail());
+            } else {
+                lblEmail.setText("-----------");
+            }
+            if (user.getPhoneNumber() != null) {
+                lblPhoneNumber.setText(user.getPhoneNumber());
+            } else {
+                lblPhoneNumber.setText("-----------");
+            }
+            if (user.getSex() != null) {
+                lblSex.setText(user.getSex());
+            } else {
+                lblSex.setText("-----------");
+            }
+            if (user.getDoB() != null) {
+                lblDoB.setText(user.getDoB().toString());
+            } else {
+                lblDoB.setText("-----------");
+            }
+            if (user.getImage() != null) {
+                ImageIcon icon = new ImageIcon(new ImageIcon(user.getImage()).getImage().getScaledInstance(MAXIMIZED_HORIZ, MAXIMIZED_VERT, Image.SCALE_SMOOTH));
+                lblHinh.setIcon(icon);
+            }else{
+                lblHinh.setText("???");
+            }
+            if (user.getDescription() != null) {
+                txtDes.setText(user.getDescription());
+            } else {
+                txtDes.setText("Add your description");
+            }
         }
     }
 
