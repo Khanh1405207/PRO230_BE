@@ -15,7 +15,8 @@ import java.util.Set;
  */
 public class User {
 
-    private Set<Role> roles = new HashSet<>();
+    private Role role;
+    private int idUser;
     private String name;
     private LocalDate doB;
     private String sex;
@@ -33,6 +34,14 @@ public class User {
     private String passwordHash;
     private Boolean logOut;
     private Integer accessFailCount;
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getName() {
         return name;
@@ -170,20 +179,20 @@ public class User {
         this.accessFailCount = accessFailCount;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void addRoles(Role role) {
-        roles.add(role);
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Boolean haspermission(String per) {
-        for (Role role : roles) {
-            if (role.haspermission(per)) {
-                return true;
-            }
+        if (role.haspermission(per)) {
+            return true;
+
         }
         return false;
     }
+
 }

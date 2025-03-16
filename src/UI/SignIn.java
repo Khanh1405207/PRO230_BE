@@ -259,7 +259,8 @@ public class SignIn extends javax.swing.JFrame {
             ResultSet rsad = daoad.selectAdminUser(email, password);
             ResultSet rscu = daocu.selectCustomerUser(email, password);
             if (rsad.next()) {
-                khanh.addRoles(admin);
+                khanh.setRole(admin);
+                khanh.setIdUser(rsad.getInt("IdAdmin"));
                 khanh.setName(rsad.getString("Name"));
                 Date sqlDoB = rsad.getDate("DoB");
                 khanh.setDoB(sqlDoB != null ? sqlDoB.toLocalDate() : null);
@@ -281,7 +282,8 @@ public class SignIn extends javax.swing.JFrame {
                 new Menu(khanh).setVisible(true);
             }
             if (rscu.next()) {
-                khanh.addRoles(customer);
+                khanh.setRole(customer);
+                khanh.setIdUser(rscu.getInt("IdCustomer"));
                 khanh.setName(rscu.getString("Name"));
                 Date sqlDoB = rscu.getDate("DoB");
                 khanh.setDoB(sqlDoB != null ? sqlDoB.toLocalDate() : null);
@@ -302,7 +304,7 @@ public class SignIn extends javax.swing.JFrame {
                 khanh.setAccessFailCount(rscu.getInt("AccessFailCount"));
                 new Menu(khanh).setVisible(true);
             }
-            if (khanh.getRoles().isEmpty()) {
+            if (khanh.getRole() == null) {
                 lblNotifi.setText("- Wrong email or password");
                 lblNotifi.setForeground(new Color(255, 102, 102));
             }

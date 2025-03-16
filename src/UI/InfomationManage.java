@@ -67,7 +67,7 @@ public class InfomationManage extends javax.swing.JFrame {
             if (user.getImage() != null) {
                 ImageIcon icon = new ImageIcon(new ImageIcon(user.getImage()).getImage().getScaledInstance(MAXIMIZED_HORIZ, MAXIMIZED_VERT, Image.SCALE_SMOOTH));
                 lblHinh.setIcon(icon);
-            }else{
+            } else {
                 lblHinh.setText("???");
             }
             if (user.getDescription() != null) {
