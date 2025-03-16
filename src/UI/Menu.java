@@ -13,6 +13,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
@@ -44,12 +45,13 @@ public class Menu extends javax.swing.JFrame {
         btnSearch.setFocusPainted(false);
         btnSearch.setBorder(BorderFactory.createEmptyBorder(3, 0, 3, 0));
         lblUserName.setFont(new Font("Arial", Font.BOLD, 14));
-        lblUserName.setForeground(new Color(255,255,255));
+        lblUserName.setForeground(new Color(255, 255, 255));
     }
 
-    public void onClickDashBoard() {
+    public void onClickDashBoard(JPanel pnl) {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        Runnable task = () -> pnlCart.setBackground(new Color(115, 115, 115));
+        pnl.setBackground(new Color(217, 217, 217));
+        Runnable task = () -> pnl.setBackground(new Color(115, 115, 115));
         scheduler.schedule(task, 20, TimeUnit.MILLISECONDS);
         scheduler.shutdown();
     }
@@ -190,8 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void lblCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCartMouseClicked
         // TODO add your handling code here:
-        pnlCart.setBackground(new Color(217, 217, 217));
-        onClickDashBoard();
+        onClickDashBoard(pnlCart);
         pnlContent.setBackground(Color.white);
     }//GEN-LAST:event_lblCartMouseClicked
 
@@ -200,7 +201,7 @@ public class Menu extends javax.swing.JFrame {
         if (user == null) {
             dispose();
             new SignIn().setVisible(true);
-        }else{
+        } else {
             new InfomationManage(user).setVisible(true);
         }
     }//GEN-LAST:event_pnlAvatarMouseClicked
