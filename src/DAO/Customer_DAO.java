@@ -3,31 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+
 import Model.Customer;
 import Utility.DBcontext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  *
  * @author ADMIN
  */
 public class Customer_DAO {
 
+    String dangKy = "INSERT INTO Customer (Name, Email, PhoneNumber, [Password], UserName)\n"
+            + "VALUES (?,?,?,?,?)";
+    
     String selectCustomer = "SELECT IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
             + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
             + "PasswordHash, LogOut, AccessFailCount FROM Customer";
-    
+
     String SqlInsertCustomer = "INSERT INTO Customer (IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, PasswordHash, LogOut, AccessFailCount) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     String SqlUpdateCustomer = "UPDATE Customer SET Name = ?, DoB = ?, Sex = ?, Email = ?, PhoneNumber = ?, Address = ?, Status = ?, Description = ?, Image = ?, Password = ?, UserName = ?, EmailConfirmed = ?, PhoneNumberConfirmed = ?, PasswordHash = ?, LogOut = ?, AccessFailCount = ? WHERE IdCustomer = ?";
 
     String SqlDeleteCustomer = "DELETE FROM Customer WHERE IdCustomer = ?";
-    
+
     Connection cn = DBcontext.getConnection();
     
-     public ArrayList<Customer> selectCustomer() {
+    
+    
+    public ArrayList<Customer> selectCustomer() {
         ArrayList<Customer> customerList = new ArrayList<>();
         try {
             PreparedStatement stm = cn.prepareStatement(selectCustomer);
@@ -59,7 +67,20 @@ public class Customer_DAO {
         }
         return customerList;
     }
-
+    public boolean dangKy(Customer customer) {
+        try {
+            PreparedStatement ps = cn.prepareStatement(dangKy);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getEmail());
+            ps.setString(3, customer.getPhoneNumber());
+            ps.setString(4, customer.getPassword());
+            ps.setString(5, customer.getUserName());
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean insertCustomer(Customer customer) {
         try {
             PreparedStatement stm = cn.prepareStatement(SqlInsertCustomer);

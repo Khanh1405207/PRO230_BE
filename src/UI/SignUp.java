@@ -4,11 +4,15 @@
  */
 package UI;
 
+import DAO.Customer_DAO;
+import Model.Customer;
+import Model.User;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 /**
@@ -17,11 +21,9 @@ import javax.swing.border.MatteBorder;
  */
 public class SignUp extends javax.swing.JFrame {
 
-    
+    Customer_DAO serviceCustomer = new Customer_DAO();
 
-    /**
-     * Creates new form SignUp
-     */
+    
     public SignUp() {
         initComponents();
         setLocationRelativeTo(null);
@@ -53,7 +55,26 @@ public class SignUp extends javax.swing.JFrame {
         lblSignIn.setFont(new Font("segoe UI", Font.BOLD, 12));
         pnlSignUp.setBackground(new Color(102, 102, 102));
     }
-
+    
+    
+    
+    public Customer getData(){
+        String name = "Skidibidopdopzzz";
+        String email = txtEmail.getText();
+        String phoneNumber = txtSDT.getText();
+        String password = txtPassword.getText();
+        String userName = txtUserName.getText();
+        Customer c = new Customer(name, email, phoneNumber, password, userName);
+        return c;
+    }
+    
+    private boolean check(){
+        if(txtEmail.getText().isBlank()||txtPassword.getText().isBlank()||txtSDT.getText().isBlank()||txtUserName.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Moi nhap day du");
+            return false;
+        }
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,7 +214,7 @@ public class SignUp extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,7 +296,13 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSignInMouseClicked
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        // TODO add your handling code here:
+        if(check()){
+            serviceCustomer.dangKy(getData());
+            User khanh = new User();
+            new Menu(khanh).setVisible(true);
+            dispose();
+        }
+        
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
