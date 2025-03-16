@@ -301,8 +301,7 @@ public class SignUp extends javax.swing.JFrame {
             User khanh = new User();
             new Menu(khanh).setVisible(true);
             dispose();
-        }
-        
+        } 
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**

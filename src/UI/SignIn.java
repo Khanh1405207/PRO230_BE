@@ -6,18 +6,24 @@ package UI;
 
 import DAO.Admin_DAO;
 import DAO.Customer_DAO;
+import DAO.Admin_DAO;
+import DAO.Customer_DAO;
 import Model.Admin;
 import Model.Customer;
 import Model.Role;
 import Model.User;
+import Utility.DBcontext;
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Date;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+import java.sql.ResultSet;
 
 /**
  *
@@ -237,8 +243,11 @@ public class SignIn extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         // TODO add your handling code here:
+        //Roles
+        //------------------------------------
         User khanh = new User();
         Role admin = new Role();
+        admin.setRoleName("admin");
         boolean isAdmin = false;
         boolean isCustomer = false;
         admin.addPermission("Read");
@@ -246,37 +255,70 @@ public class SignIn extends javax.swing.JFrame {
         admin.addPermission("Delete");
         admin.addPermission("Update");
         Role customer = new Role();
+        customer.setRoleName("customer");
         customer.addPermission("Read");
-
-        for (Admin adminUser : serviceAdmin.selectAdmin()) {
-            if (txtEmail.getText().equalsIgnoreCase(adminUser.getEmail())
-                    && txtPassword.getText().equals(adminUser.getPassword())) {
-                isAdmin = true;
-                break;
-            }
-        }
-        for (Customer customerUser : serviceCustomer.selectCustomer()) {
-            if (txtEmail.getText().equalsIgnoreCase(customerUser.getEmail())
-                    && txtPassword.getText().equals(customerUser.getPassword())) {
-                isCustomer = true;
-                break;
-            }
-        }
-
-        if (isAdmin  ) {
-            if (isAdmin) {
+        //------------------------------------
+        //Sign in logic
+        //------------------------------------
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        try {
+            Admin_DAO daoad = new Admin_DAO();
+            Customer_DAO daocu = new Customer_DAO();
+            ResultSet rsad = daoad.selectAdminUser(email, password);
+            ResultSet rscu = daocu.selectCustomerUser(email, password);
+            if (rsad.next()) {
                 khanh.addRoles(admin);
+                khanh.setName(rsad.getString("Name"));
+                Date sqlDoB = rsad.getDate("DoB");
+                khanh.setDoB(sqlDoB != null ? sqlDoB.toLocalDate() : null);
+                khanh.setSex(rsad.getString("Sex"));
+                khanh.setCreateDate(rsad.getTimestamp("CreateDate").toLocalDateTime());
+                khanh.setEmail(rsad.getString("Email"));
+                khanh.setPhoneNumber(rsad.getString("PhoneNumber"));
+                khanh.setAddress(rsad.getString("Address"));
+                khanh.setStatus(rsad.getString("Status"));
+                khanh.setDescription(rsad.getString("Description"));
+                khanh.setImage(rsad.getString("Image"));
+                khanh.setPassword(rsad.getString("Password"));
+                khanh.setUserName(rsad.getString("UserName"));
+                khanh.setEmailConfirmed(rsad.getBoolean("EmailConfirmed"));
+                khanh.setPhoneNumberConfirmed(rsad.getBoolean("PhoneNumberConfirmed"));
+                khanh.setPasswordHash(rsad.getString("PasswordHash"));
+                khanh.setLogOut(rsad.getBoolean("LogOut"));
+                khanh.setAccessFailCount(rsad.getInt("AccessFailCount"));
+                new Menu(khanh).setVisible(true);
             }
-            if (isCustomer) {
+            if (rscu.next()) {
                 khanh.addRoles(customer);
+                khanh.setName(rscu.getString("Name"));
+                Date sqlDoB = rscu.getDate("DoB");
+                khanh.setDoB(sqlDoB != null ? sqlDoB.toLocalDate() : null);
+                khanh.setSex(rscu.getString("Sex"));
+                khanh.setCreateDate(rscu.getTimestamp("CreateDate").toLocalDateTime());
+                khanh.setEmail(rscu.getString("Email"));
+                khanh.setPhoneNumber(rscu.getString("PhoneNumber"));
+                khanh.setAddress(rscu.getString("Address"));
+                khanh.setStatus(rscu.getString("Status"));
+                khanh.setDescription(rscu.getString("Description"));
+                khanh.setImage(rscu.getString("Image"));
+                khanh.setPassword(rscu.getString("Password"));
+                khanh.setUserName(rscu.getString("UserName"));
+                khanh.setEmailConfirmed(rscu.getBoolean("EmailConfirmed"));
+                khanh.setPhoneNumberConfirmed(rscu.getBoolean("PhoneNumberConfirmed"));
+                khanh.setPasswordHash(rscu.getString("PasswordHash"));
+                khanh.setLogOut(rscu.getBoolean("LogOut"));
+                khanh.setAccessFailCount(rscu.getInt("AccessFailCount"));
+                new Menu(khanh).setVisible(true);
             }
-            khanh.setUserName(txtEmail.getText());
-            new Menu(khanh).setVisible(true);
-            dispose();
-        } else {
-            lblNotifi.setText("- Wrong email or password");
-            lblNotifi.setForeground(new Color(255, 102, 102));
+            if (khanh.getRoles().isEmpty()) {
+                lblNotifi.setText("- Wrong email or password");
+                lblNotifi.setForeground(new Color(255, 102, 102));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        //------------------------------------
 
     }//GEN-LAST:event_btnSignInActionPerformed
 

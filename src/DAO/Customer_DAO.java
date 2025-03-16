@@ -4,11 +4,13 @@
  */
 package DAO;
 
+
 import Model.Customer;
 import Utility.DBcontext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 /**
@@ -24,6 +26,10 @@ public class Customer_DAO {
             + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
             + "PasswordHash, LogOut, AccessFailCount FROM Customer";
 
+    String selectCustomerById = "SELECT IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
+            + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
+            + "PasswordHash, LogOut, AccessFailCount FROM Customer WHERE IdCustomer=?";
+
     String SqlInsertCustomer = "INSERT INTO Customer (IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, PasswordHash, LogOut, AccessFailCount) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -32,9 +38,7 @@ public class Customer_DAO {
     String SqlDeleteCustomer = "DELETE FROM Customer WHERE IdCustomer = ?";
 
     Connection cn = DBcontext.getConnection();
-    
-    
-    
+
     public ArrayList<Customer> selectCustomer() {
         ArrayList<Customer> customerList = new ArrayList<>();
         try {
@@ -44,7 +48,8 @@ public class Customer_DAO {
                 Customer customer = new Customer();
                 customer.setIdCustomer(rs.getInt("IdCustomer"));
                 customer.setName(rs.getString("Name"));
-                customer.setDoB(rs.getDate("DoB").toLocalDate());
+                Date sqlDoB = rs.getDate("DoB");
+                customer.setDoB(sqlDoB != null ? sqlDoB.toLocalDate() : null);
                 customer.setSex(rs.getString("Sex"));
                 customer.setCreateDate(rs.getTimestamp("CreateDate").toLocalDateTime());
                 customer.setEmail(rs.getString("Email"));
@@ -66,6 +71,22 @@ public class Customer_DAO {
             e.printStackTrace();
         }
         return customerList;
+    }
+
+    public ResultSet selectCustomerUser(String email, String password) {
+        try {
+            String sql = "SELECT IdCustomer, Name, DoB, Sex, CreateDate, Email, PhoneNumber, Address, Status, "
+                    + "Description, Image, Password, UserName, EmailConfirmed, PhoneNumberConfirmed, "
+                    + "PasswordHash, LogOut, AccessFailCount FROM Customer WHERE Email=? AND [Password]=?";
+            PreparedStatement stm = cn.prepareStatement(sql);
+            stm.setString(1, email);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public boolean dangKy(Customer customer) {
         try {
