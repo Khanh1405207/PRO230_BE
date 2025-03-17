@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class DBcontext {
 
     public static String USERNAME = "sa";
-    public static String PASWORD = "1234";
+    public static String PASWORD = "Khanh207!";
     public static String URL = "jdbc:sqlserver://localhost:1433;databaseName=PRO230_DATN;encrypt=true;trustServerCertificate=true;";
     
     static {

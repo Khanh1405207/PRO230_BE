@@ -105,7 +105,7 @@ public class InfomationManage extends javax.swing.JFrame {
         lblDoB = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlHinh.setLayout(new java.awt.BorderLayout());
 

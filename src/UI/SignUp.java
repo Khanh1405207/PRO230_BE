@@ -7,12 +7,14 @@ package UI;
 import DAO.Customer_DAO;
 import Model.Customer;
 import Model.User;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.border.MatteBorder;
 
 /**
@@ -66,7 +68,7 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     private boolean check() {
-        if (txtEmail.getText().isBlank() || txtPassword.getText().isBlank() || txtSDT.getText().isBlank() || txtUserName.getText().isBlank()) {
+        if (txtEmail.getForeground() == Color.GRAY || txtPassword.getForeground() == Color.GRAY || txtSDT.getForeground() == Color.GRAY || txtUserName.getForeground() == Color.GRAY) {
             JOptionPane.showMessageDialog(this, "Moi nhap day du");
             return false;
         }
@@ -81,7 +83,13 @@ public class SignUp extends javax.swing.JFrame {
         }
         for (Customer cm : serviceCustomer.selectCustomer()) {
             if (txtUserName.getText().equalsIgnoreCase(cm.getUserName())) {
-                JOptionPane.showMessageDialog(this, "Moi nhap khong trung user name");
+                JOptionPane.showMessageDialog(this, "UserName exited");
+                return false;
+            }
+        }
+        for (Customer cm : serviceCustomer.selectCustomer()) {
+            if (txtEmail.getText().equalsIgnoreCase(cm.getEmail())) {
+                JOptionPane.showMessageDialog(this, "Email exited");
                 return false;
             }
         }
@@ -305,8 +313,7 @@ public class SignUp extends javax.swing.JFrame {
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         if (check()) {
             serviceCustomer.dangKy(getData());
-            User khanh = new User();
-            new Menu(khanh).setVisible(true);
+            new SignIn().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnSignUpActionPerformed
@@ -337,7 +344,11 @@ public class SignUp extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        try {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
