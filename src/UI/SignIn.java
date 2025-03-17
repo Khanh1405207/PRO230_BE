@@ -6,6 +6,10 @@ package UI;
 
 import DAO.Admin_DAO;
 import DAO.Customer_DAO;
+import DAO.Admin_DAO;
+import DAO.Customer_DAO;
+import Model.Admin;
+import Model.Customer;
 import Model.Role;
 import Model.User;
 import Utility.DBcontext;
@@ -14,6 +18,7 @@ import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Date;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -27,6 +32,8 @@ import java.sql.ResultSet;
 public class SignIn extends javax.swing.JFrame {
 
     private Menu menu;
+    private Admin_DAO serviceAdmin = new Admin_DAO();
+    private Customer_DAO serviceCustomer = new Customer_DAO();
 
     /**
      * Creates new form SignIn
@@ -241,6 +248,8 @@ public class SignIn extends javax.swing.JFrame {
         User khanh = new User();
         Role admin = new Role();
         admin.setRoleName("admin");
+        boolean isAdmin = false;
+        boolean isCustomer = false;
         admin.addPermission("Read");
         admin.addPermission("Write");
         admin.addPermission("Delete");
@@ -312,6 +321,7 @@ public class SignIn extends javax.swing.JFrame {
             e.printStackTrace();
         }
         //------------------------------------
+
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void btnSignInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignInMouseEntered

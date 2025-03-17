@@ -35,6 +35,16 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String name, String email, String phoneNumber, String password, String userName) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.userName = userName;
+    }
+    
+    
+    
     public Customer(Integer idCustomer, String name, LocalDate doB, String sex, LocalDateTime createDate, String email, String phoneNumber, String address, String status, String description, String image, String password, String userName, Boolean emailConfirmed, Boolean phoneNumberConfirmed, String passwordHash, Boolean logOut, Integer accessFailCount) {
         this.idCustomer = idCustomer;
         this.name = name;

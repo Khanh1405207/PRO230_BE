@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "e:\\mssql-jdbc-7.2.2.jre8.jar",
+        "c:\\Users\\Administrator\\Documents\\flatlaf-demo-3.5.4.jar"
+    ]
+}
