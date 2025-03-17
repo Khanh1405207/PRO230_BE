@@ -85,6 +85,18 @@ public class SignUp extends javax.swing.JFrame {
                 return false;
             }
         }
+        if (txtEmail.getText().equalsIgnoreCase("- Email")) {
+            JOptionPane.showMessageDialog(this, "Moi nhap email");
+            return false;
+        }
+        if (txtSDT.getText().equalsIgnoreCase("- SDT")) {
+            JOptionPane.showMessageDialog(this, "Moi nhap SDT");
+            return false;
+        }
+        if (txtEmail.getText().equalsIgnoreCase("- Password")) {
+            JOptionPane.showMessageDialog(this, "Moi nhap passwrod");
+            return false;
+        }
         return true;
     }
 
